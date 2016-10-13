@@ -20,7 +20,7 @@ class Elevator {
     Elevator(int ID);
     int getFloor();
     int getID();
-    list<int> getGoalFloors();
+    set<int> getGoalFloors();
 };
 
 class PickupRequest {
@@ -62,6 +62,7 @@ class ControlSystem {
   public:
     ControlSystem(int nElevators, int nFloors, ControlModule * module);
     vector<Elevator> status();
+    int getTime();
     void inputGoal(int ID, int floor);
     void pickup(int floor, Direction direction);
     void step();

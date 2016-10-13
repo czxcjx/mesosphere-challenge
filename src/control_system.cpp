@@ -13,6 +13,11 @@ int Elevator::getID() {
   return this->ID;
 }
 
+set<int> Elevator::getGoalFloors() {
+  set<int> ret = this->goalFloors;
+  return ret;
+}
+
 PickupRequest::PickupRequest(int time, int floor, Direction direction) {
   this->time = time;
   this->floor = floor;
@@ -43,6 +48,10 @@ ControlSystem::ControlSystem(int nElevators, int nFloors,
 
 vector<Elevator> ControlSystem::status() {
   return this->elevators;
+}
+
+int ControlSystem::getTime() {
+  return this->currentTime;
 }
 
 void ControlSystem::pickup(int floor, Direction direction) {
@@ -87,4 +96,5 @@ void ControlSystem::step() {
       }
     }
   }
+  this->currentTime++;
 }

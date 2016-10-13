@@ -54,7 +54,7 @@ class ControlModule {
 class ControlSystem {
   private:
     int currentTime;
-    int floors;
+    int floorCount;
     vector<Elevator> elevators;
     list<PickupRequest> pickupRequests;
     ControlModule * module;
@@ -62,6 +62,9 @@ class ControlSystem {
   public:
     ControlSystem(int nElevators, int nFloors, ControlModule * module);
     vector<Elevator> status();
+    list<PickupRequest> getRequests();
+    int getElevatorCount();
+    int getFloorCount();
     int getTime();
     void inputGoal(int ID, int floor);
     void pickup(int floor, Direction direction);

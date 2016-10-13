@@ -1,7 +1,21 @@
-all:
-	g++ -c src/control_system.cpp -o obj/control_system.o
-	g++ -c src/blank_module.cpp -o obj/blank_module.o
-	g++ obj/control_system.o obj/blank_module.o src/main.cpp -o bin/main
+CPPFLAGS=-g -Wall -Wextra -std=c++11 -iquote src/ -Wno-sign-compare
+CXX=g++
+SRCDIR=src
+BINDIR=bin
+OBJDIR=obj
+LDFLAGS=
+LIBS=
+
+SOURCES=$(wildcard $(SRCDIR)/*.cpp)
+OBJS=$(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+
+all: $(OBJDIR) $(BINDIR) main
+
+main: $(OBJS)
+	$(CXX) $(CPPFLAGS) $(LIBS) $(OBJS) -o $(BINDIR)/main
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CPPFLAGS) $(LIBS) -c $< -o $@
 
 clean:
-	rm bin/* obj/*
+	rm $(BINDIR)/* $(OBJDIR)/*.o

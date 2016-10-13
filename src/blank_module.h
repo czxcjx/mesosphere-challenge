@@ -1,5 +1,5 @@
 #pragma once
-#include "elevator.h"
+#include "control_system.h"
 
 class BlankModule : public ControlModule {
   public:

@@ -1,21 +1,24 @@
-#include "fcfs_module.h"
 #include "control_system.h"
 #include "control_tester.h"
+#include "fcfs_module.h"
+#include "greedy_module.h"
 #include <iostream>
 #include <cstdlib>
 using namespace std;
 
+const int NUM_ELEVATORS = 8;
+const int NUM_FLOORS = 50;
+const int NUM_ROUNDS = 10000;
+
 int main () {
-  FCFSModule module(4);
-  ControlSystem system(4, 20, &module);
+  GreedyModule module(NUM_ELEVATORS);
+  ControlSystem system(NUM_ELEVATORS, NUM_FLOORS, &module);
   ControlTester tester(&system);
   srand(31337);
-  for (int i = 0; i < 100; i++) {
-    if (i < 15) {
-      tester.createPerson(rand() % 20 + 1, rand() % 20 + 1);
-    }
+  for (int i = 0; i < NUM_ROUNDS; i++) {
+    tester.createPerson(rand() % NUM_FLOORS + 1, rand() % NUM_FLOORS + 1);
     tester.step();
-    // tester.printStatus();
+    tester.printStatus();
   }
   tester.printStats();
   return 0;

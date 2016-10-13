@@ -54,7 +54,6 @@ void ControlTester::step() {
 
         // If both heading same direction, move person to elevator
         if ((newFloor < oldFloor) == (person->target < oldFloor)) {
-          printf("Elevator %d picked up person on floor %d\n", id, oldFloor);
           this->system->inputGoal(id, person->target);
           this->movingPeople[i].push_back(*person);
           person = this->waitingPeople[oldFloor - 1].erase(person);
@@ -127,8 +126,10 @@ void ControlTester::printStatus() {
       printf(" [%d -> %d]", i + 1, person.target);
     }
   }
-  printf("\n");
+  printf("\n\n");
+}
+
+void ControlTester::printStats() {
   printf(" Max wait: %d\n", this->getMaxWait());
   printf(" Mean wait: %f\n", this->getMeanWait());
-  printf("\n");
 }

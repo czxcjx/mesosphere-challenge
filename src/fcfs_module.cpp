@@ -1,5 +1,4 @@
 #include "fcfs_module.h"
-using namespace std;
 
 FCFSModule::FCFSModule(int nElevators) {
   this->targetFloors.resize(nElevators);

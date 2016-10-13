@@ -27,4 +27,5 @@ class ControlTester {
     void step();
 
     void printStatus();
+    void printStats();
 };

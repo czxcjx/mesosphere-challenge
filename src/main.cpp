@@ -14,9 +14,9 @@ int main () {
     if (i < 15) {
       tester.createPerson(rand() % 20 + 1, rand() % 20 + 1);
     }
-
     tester.step();
-    tester.printStatus();
+    // tester.printStatus();
   }
+  tester.printStats();
   return 0;
 }
